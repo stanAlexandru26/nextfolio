@@ -18,5 +18,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'react-hooks', 'jsx-a11y', 'prettier'],
-  rules: {},
+  rules: {
+    'react/jsx-props-no-spreading': 'off',
+  },
 };
