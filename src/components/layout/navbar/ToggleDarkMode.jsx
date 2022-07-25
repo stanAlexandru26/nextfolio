@@ -17,7 +17,7 @@ export default function ToggleDarkMode() {
       type='button'
       className={clsxm(
         'flex h-8 w-8 items-center justify-center transition-all  ',
-        'rounded-lg bg-slate-300 ring-slate-400 hover:ring-2 dark:bg-slate-700 dark:ring-slate-600'
+        'rounded-lg bg-slate-300 text-gray-900 ring-slate-400 hover:ring-2 dark:bg-slate-700 dark:text-gray-100 dark:ring-slate-600'
       )}
     >
       <Icon
