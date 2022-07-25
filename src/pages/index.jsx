@@ -1,3 +1,5 @@
+import ToggleDarkMode from '@/components/layout/navbar/ToggleDarkMode';
+
 export default function Home() {
   return (
     <main>
@@ -9,7 +11,7 @@ export default function Home() {
           <h4 className='mt-4'>Next.js + Tailwind CSS</h4>
           <h5 className='mt-4'>Next.js + Tailwind CSS</h5>
           <h6 className='mt-4 '>Next.js + Tailwind CSS</h6>
-          
+          <ToggleDarkMode />
 
           <footer className='absolute  bottom-2  text-gray-700'>
             {new Date().getFullYear()}
