@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-slate-200 text-slate-600 dark:bg-slate-900 dark:text-slate-400;
+    @apply bg-slate-200 text-slate-700 dark:bg-slate-900 dark:text-slate-300;
   }
 
   h1,
@@ -43,6 +43,6 @@
     /* 1100px */
     /* 1536px */
     max-width: 68.75rem;
-    @apply mx-auto w-8/12;
+    @apply mx-auto w-8/12 min-h-screen;
   }
 }
