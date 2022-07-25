@@ -6,8 +6,8 @@ import clsxm from '@/lib/clsxm';
 export default function Navbar() {
   return (
     <nav>
-      <div className={clsxm('flex items-center justify-between p-6')}>
-        <ul className='flex items-center justify-center '>
+      <div className={clsxm('flex items-center justify-between py-6')}>
+        <ul className='ml-[-0.75rem] flex items-center justify-center '>
           {navbarData.map(({ name, href }) => (
             <NavItem key={name} href={href} name={name} />
           ))}
