@@ -2,6 +2,7 @@ import NavItem from './NavItem';
 import ToggleDarkMode from './ToggleDarkMode';
 import navbarData from '@/data/navbarData';
 import clsxm from '@/lib/clsxm';
+import ButtonWithIcon from '@/components/button/ButtonWithIcon';
 
 export default function Navbar() {
   return (
@@ -12,7 +13,9 @@ export default function Navbar() {
             <NavItem key={name} href={href} name={name} />
           ))}
         </ul>
-        <div>
+        <div className='flex space-x-2'>
+          <ButtonWithIcon path={'github'} icon='fa:github' />
+          <ButtonWithIcon path={'linkedIn'} icon='fa-brands:linkedin-in' />
           <ToggleDarkMode />
         </div>
       </div>
