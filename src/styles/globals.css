@@ -43,6 +43,6 @@
     /* 1100px */
     /* 1536px */
     max-width: 68.75rem;
-    @apply mx-auto w-8/12 min-h-screen;
+    @apply mx-auto min-h-screen w-10/12 sm:w-8/12 md:w-6/12;
   }
 }
