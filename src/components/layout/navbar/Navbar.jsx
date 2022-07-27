@@ -4,8 +4,12 @@ import navbarData from '@/data/navbarData';
 import clsxm from '@/lib/clsxm';
 import ButtonWithIcon from '@/components/button/ButtonWithIcon';
 import ToggleLanguage from './ToggleLanguage';
+import { useContext } from 'react';
+import ContactContext from '@/context/ContactContext';
 
 export default function Navbar() {
+  const { github, linkedIn } = useContext(ContactContext);
+
   return (
     <nav>
       <div className={clsxm('flex items-center justify-between py-6')}>
@@ -15,8 +19,10 @@ export default function Navbar() {
           ))}
         </ul>
         <div className='flex space-x-2'>
-          <ButtonWithIcon path={'github'} icon='fa:github' />
-          <ButtonWithIcon path={'linkedIn'} icon='fa-brands:linkedin-in' />
+          {github && <ButtonWithIcon path={github} icon='fa:github' />}
+          {linkedIn && (
+            <ButtonWithIcon path={linkedIn} icon='fa-brands:linkedin-in' />
+          )}
           <ToggleLanguage />
           <ToggleDarkMode />
         </div>

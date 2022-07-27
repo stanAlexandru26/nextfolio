@@ -1,13 +1,10 @@
 import ProjectCard from '@/components/card/ProjectCard';
+import ContactContext from '@/context/ContactContext';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
+import { useContext } from 'react';
 
-export default function Home({
-  projectData,
-  homePageData,
-  portfolioPageData,
-  contactData,
-}) {
+export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {
     if (array == null) return void 0;
     if (n == null) return array[array.length - 1];
@@ -15,13 +12,14 @@ export default function Home({
   };
   const { intro, headshot } = homePageData;
   const { t } = useTranslation('layout');
+  const { name, profession } = useContext(ContactContext);
 
   return (
     <section className='space-y-8'>
       <div className='flex flex-col-reverse items-start justify-between sm:flex-row'>
         <div className='flex flex-col gap-4 pr-8'>
-          <h1>{contactData.name}</h1>
-          <p className='h4'>{contactData.profession}</p>
+          <h1>{name}</h1>
+          <p className='h4'>{profession}</p>
           <p className='text-gray-600 dark:text-gray-400'>{intro}</p>
         </div>
       </div>
@@ -57,16 +55,12 @@ export const getStaticProps = async ({ locale }) => {
     populate: '*',
     locale: locale,
   });
-  const contactRes = await fetchData('/contact', {
-    populate: 'deep',
-  });
 
   return {
     props: {
       homePageData: homePageRata.data.attributes,
       projectData: projectRes.data,
       portfolioPageData: portfolioPageRes.data.attributes,
-      contactData: contactRes.data.attributes,
     },
     revalidate: 1,
   };

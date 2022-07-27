@@ -1,11 +1,15 @@
 import ContactCard from '@/components/card/ContactCard';
 import TechCard from '@/components/card/TechCard';
+import ContactContext from '@/context/ContactContext';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
+import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 
 export default function About({ aboutData, skillData }) {
   const { bio, skills } = aboutData;
+  const { github, linkedIn, email } = useContext(ContactContext);
+
   const { t } = useTranslation('about');
   return (
     <section className='space-y-8'>
@@ -30,21 +34,21 @@ export default function About({ aboutData, skillData }) {
       </div>
       <ul className='grid w-full grid-cols-1 gap-4 text-gray-600 dark:text-gray-400 md:grid-cols-3 md:flex-row'>
         <ContactCard
-          path={`email`}
+          path={`mailto:${email}`}
           title='E-mail'
-          description={'email'}
-          icon={'ci:mail'}
+          description={email}
+          icon='ci:mail'
         />
         <ContactCard
-          path={'linkedIn'}
+          path={linkedIn}
           title='LinkedIn'
-          description={'about_contact.linkedin'}
+          description={t('about_contact.linkedin')}
           icon='fa-brands:linkedin-in'
         />
         <ContactCard
-          path={'github'}
+          path={github}
           title='GitHub'
-          description={'about_contact.github'}
+          description={t('about_contact.github')}
           icon='fa:github'
         />
       </ul>

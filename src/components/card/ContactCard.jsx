@@ -7,7 +7,7 @@ export default function ContactCard({ description, icon, path, title }) {
       target='_blank'
       rel='nofollow noopener noreferrer'
       href={path}
-      className='w-full rounded-2xl border border-gray-400 p-4 dark:border-gray-600'
+      className='flex w-full flex-col gap-4 rounded-2xl border border-gray-400 p-4 dark:border-gray-600'
     >
       <div className='flex flex-row items-center gap-2'>
         {icon && <Icon icon={icon} className='h-5 w-5' />}
