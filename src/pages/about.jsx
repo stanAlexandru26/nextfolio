@@ -1,16 +1,17 @@
 import ContactCard from '@/components/card/ContactCard';
 import TechCard from '@/components/card/TechCard';
 import { fetchData } from '@/lib/fetchData';
+import useTranslation from 'next-translate/useTranslation';
 import ReactMarkdown from 'react-markdown';
 
 export default function About({ aboutData, skillData }) {
-  console.log('🚀 ~ file: about.jsx ~ line 6 ~ About ~ skillData', skillData);
   const { bio, skills } = aboutData;
+  const { t } = useTranslation('about');
   return (
     <section className='space-y-8'>
-      <h1>About</h1>
+      <h1>{t('about_title')}</h1>
       <p>{bio.long}</p>
-      <h1>Skills</h1>
+      <h1>{t('skills_title')}</h1>
       <div className='flex flex-col gap-4 sm:flex-row'>
         <ReactMarkdown className='prose prose-slate dark:prose-invert'>
           {skills.content}

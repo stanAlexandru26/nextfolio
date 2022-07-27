@@ -1,0 +1,9 @@
+{
+  "about_title": "About Me",
+  "skills_title": "Skills",
+  "about_contact": {
+    "email": "Email",
+    "linkedin": "See my LinkedIn profile",
+    "github": "See my Github profile"
+  }
+}

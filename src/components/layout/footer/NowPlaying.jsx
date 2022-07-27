@@ -2,9 +2,11 @@ import useSWR from 'swr';
 
 import fetcher from '@/lib/fetcher';
 import { Icon } from '@iconify/react';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function NowPlaying() {
   const { data } = useSWR('/api/now-playing', fetcher);
+  const { t } = useTranslation('layout');
 
   return (
     <div className='mb-8 flex w-full flex-row-reverse items-center space-x-0 sm:flex-row sm:space-x-2'>
@@ -21,7 +23,7 @@ export default function NowPlaying() {
             {data.title}
           </a>
         ) : (
-          <p className=' font-semibold'>Not Playing</p>
+          <p className=' font-semibold'>{t('spotify_not_playing')}</p>
         )}
         <span className=' mx-2 hidden sm:block'>{' – '}</span>
         <p className=' max-w-max truncate text-gray-500 dark:text-gray-300'>

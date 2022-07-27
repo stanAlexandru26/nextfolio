@@ -1,5 +1,6 @@
 import ProjectCard from '@/components/card/ProjectCard';
 import { fetchData } from '@/lib/fetchData';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Home({
   projectData,
@@ -13,6 +14,8 @@ export default function Home({
     return array.slice(Math.max(array.length - n, 0));
   };
   const { intro, headshot } = homePageData;
+  const { t } = useTranslation('layout');
+
   return (
     <section className='space-y-8'>
       <div className='flex flex-col-reverse items-start justify-between sm:flex-row'>
@@ -22,7 +25,7 @@ export default function Home({
           <p className='text-gray-600 dark:text-gray-400'>{intro}</p>
         </div>
       </div>
-      <h2>Latest Projects</h2>
+      <h2>{t('latest_projects')}</h2>
       <p className='text-gray-600 dark:text-gray-400 '>
         {portfolioPageData.shortDescription}
       </p>

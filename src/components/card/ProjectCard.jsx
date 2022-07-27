@@ -1,4 +1,5 @@
 import clsxm from '@/lib/clsxm';
+import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
 import ButtonWithIcon from '../button/ButtonWithIcon';
 
@@ -9,6 +10,8 @@ export default function ProjectCard({
   deploymentURL,
   stacks,
 }) {
+  const { t } = useTranslation('layout');
+
   return (
     <article
       className={clsxm(
@@ -27,7 +30,7 @@ export default function ProjectCard({
         </ul>
       )}
       <div className='flex w-full flex-row items-center justify-between '>
-        {slug && <Link href={`/projects/${slug}`}>Learn More</Link>}
+        {slug && <Link href={`/projects/${slug}`}>{t('link_learn_more')}</Link>}
         <div className='flex justify-end gap-2'>
           {repositoryURL && (
             <ButtonWithIcon icon='fa:github' path={repositoryURL} />

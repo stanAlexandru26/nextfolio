@@ -16,8 +16,8 @@ export default function ToggleDarkMode() {
       aria-label='Toggle Dark Mode'
       type='button'
       className={clsxm(
-        'flex h-8 w-8 items-center justify-center transition-all  ',
-        'rounded-lg bg-slate-300  ring-slate-400 hover:ring-2 dark:bg-slate-700  dark:ring-slate-600'
+        'active: flex h-8 w-8 items-center justify-center rounded-lg transition-all',
+        'bg-slate-300 opacity-75 ring-slate-400 hover:opacity-100 hover:ring-2 dark:bg-slate-700  dark:ring-slate-600'
       )}
     >
       <Icon

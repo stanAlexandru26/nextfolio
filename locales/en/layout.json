@@ -1,0 +1,24 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "project": "Projects"
+  },
+  "darkmode": {
+    "darkmode": "Dark Mode",
+    "lightmode": "Light Mode"
+  },
+  "language": {
+    "language": "Language",
+    "english": "English",
+    "romanian": "Română"
+  },
+  "link_learn_more": "Learn more",
+  "link_project": "My Projects",
+  "error_page_link": "Go back to the home page",
+  "error_page_text": "Page not found",
+  "latest_projects": "Latest Projects",
+
+  "spotify_not_playing": "Not Playing",
+  "footer": "Coded with [Next.js](https://nextjs.org),[Tailwind](https://tailwindcss.com),[Strapi](https://strapi.io) and hosted on [Vercel](https://vercel.com).Design inspiration from [Lee Robinson](https://github.com/leerob)."
+}

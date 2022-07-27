@@ -3,6 +3,7 @@ import ToggleDarkMode from './ToggleDarkMode';
 import navbarData from '@/data/navbarData';
 import clsxm from '@/lib/clsxm';
 import ButtonWithIcon from '@/components/button/ButtonWithIcon';
+import ToggleLanguage from './ToggleLanguage';
 
 export default function Navbar() {
   return (
@@ -16,6 +17,7 @@ export default function Navbar() {
         <div className='flex space-x-2'>
           <ButtonWithIcon path={'github'} icon='fa:github' />
           <ButtonWithIcon path={'linkedIn'} icon='fa-brands:linkedin-in' />
+          <ToggleLanguage />
           <ToggleDarkMode />
         </div>
       </div>

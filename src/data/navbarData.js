@@ -1,14 +1,14 @@
 const navbarData = [
   {
-    name: 'Home',
+    name: 'navbar.home',
     href: '/',
   },
   {
-    name: 'About',
+    name: 'navbar.about',
     href: '/about',
-  },
+  }, 
   {
-    name: 'Projects',
+    name: 'navbar.project',
     href: '/projects',
   },
 ];

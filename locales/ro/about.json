@@ -1,0 +1,9 @@
+{
+  "about_title": "Despre mine",
+  "skills_title": "Abilități",
+  "about_contact": {
+    "email": "Email",
+    "linkedin": "Vezi profilul meu de LinkedIn",
+    "github": "Vezi profilul meu de GitHub"
+  }
+}

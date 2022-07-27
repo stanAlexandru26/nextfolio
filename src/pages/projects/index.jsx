@@ -1,11 +1,14 @@
 import ProjectCard from '@/components/card/ProjectCard';
 import { fetchData } from '@/lib/fetchData';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Projects({ projectData, portfolioPageData }) {
   const { longDescription } = portfolioPageData;
+  const { t } = useTranslation('projects');
+
   return (
     <section className='space-y-8'>
-      <h1>{'Project Page'}</h1>
+      <h1> {t('project_page_title')}</h1>
       <p>{longDescription}</p>
 
       <div className='flex w-full flex-col gap-4'>

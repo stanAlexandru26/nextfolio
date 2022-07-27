@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextTranslate = require('next-translate');
+module.exports = nextTranslate({
   swcMinify: true,
   reactStrictMode: true,
   images: {
@@ -18,7 +19,7 @@ module.exports = {
       },
     ];
   },
-};
+});
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
