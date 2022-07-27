@@ -1,5 +1,135 @@
-export default function ProjectPage() {
+import TechCard from '@/components/card/TechCard';
+import DeployementLink from '@/components/link/DeployementLink';
+import { fetchData } from '@/lib/fetchData';
+import { Icon } from '@iconify/react';
+import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
+
+export default function ProjectPage({ projectData }) {
+  const {
+    title,
+    description,
+    stacks,
+    repositoryURL,
+    deploymentURL,
+    images,
+    highlights,
+  } = projectData;
+  const { t } = useTranslation('projects');
+
+  const photos = images.data?.map((image) => ({
+    src: image.attributes.url,
+    width: image.attributes.width,
+    height: image.attributes.height,
+    alt: image.attributes.alt,
+  }));
+
   return (
-    <div>ProjectPage</div>
-  )
+    <article className='space-y-8'>
+      <h1>{title}</h1>
+      <p>{description}</p>
+      {highlights && (
+        <>
+          <h2>{t('individual_project_highlight')}</h2>
+          <ReactMarkdown className='prose text-slate-600 dark:prose-invert dark:text-slate-400 '>
+            {highlights}
+          </ReactMarkdown>
+        </>
+      )}
+
+      {stacks && (
+        <div className='flex flex-row gap-4'>
+          {stacks.data?.map((s) => (
+            <TechCard
+              key={s.id}
+              title={s.attributes.title}
+              href={s.attributes.url}
+              image={s.attributes.icon.data.attributes.url}
+            />
+          ))}
+        </div>
+      )}
+      {(deploymentURL || repositoryURL) && (
+        <>
+          <h2>{t('individual_project_deployment_title')}</h2>
+          <ul className='flex gap-2'>
+            {deploymentURL && (
+              <DeployementLink
+                icon='fa:external-link'
+                href={deploymentURL}
+                text={t('individual_project_deployment_url')}
+              />
+            )}
+            {repositoryURL && (
+              <DeployementLink
+                icon='fa:github'
+                href={repositoryURL}
+                text={t('individual_project_deployment_repository')}
+              />
+            )}
+          </ul>
+        </>
+      )}
+
+      <ul className='columns-1 sm:columns-2 '>
+        {photos?.map((screenshot, index) => (
+          <Image
+            src={screenshot.src}
+            key={index}
+            height={screenshot.height}
+            width={screenshot.width}
+            alt={screenshot.alt}
+          />
+        ))}
+      </ul>
+    </article>
+  );
 }
+
+export const getStaticPaths = async ({ locales }) => {
+  const res = await fetchData('/projects', {
+    fields: 'slug',
+  });
+
+  const paths = res.data
+    .map(({ attributes: p }) =>
+      locales.map((locale) => ({
+        params: {
+          project: p.slug,
+        },
+        locale: locale,
+      }))
+    )
+    .flat();
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+export const getStaticProps = async ({ params, locale }) => {
+  const { project } = params;
+
+  const res = await fetchData('/projects', {
+    locale: locale,
+    filters: { slug: project },
+    populate: {
+      stacks: { populate: '*', sort: ['order:asc'] },
+      links: { populate: '*' },
+      thumbnail: { populate: '*' },
+      preview: { populate: '*' },
+      images: { populate: 'deep' },
+    },
+  });
+
+  const projectData = res.data[0].attributes;
+
+  return {
+    props: {
+      projectData,
+      params,
+    },
+    revalidate: 1,
+  };
+};
