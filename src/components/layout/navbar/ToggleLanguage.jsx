@@ -39,7 +39,7 @@ export default function ToggleLanguage() {
         <Popover.Panel
           className={clsxm(
             'absolute top-1/2 left-1/2 z-30 mt-16 w-32 -translate-x-1/2 -translate-y-1/2',
-            'rounded-2xl border border-gray-300 backdrop-blur-2xl dark:border-gray-700'
+            'rounded-2xl border border-gray-300 bg-slate-200 dark:border-gray-700 dark:bg-slate-900'
           )}
         >
           <div className='flex flex-col justify-evenly'>
