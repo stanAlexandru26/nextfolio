@@ -1,7 +1,6 @@
 import TechCard from '@/components/card/TechCard';
-import DeployementLink from '@/components/link/DeployementLink';
+import DeploymentLink from '@/components/link/DeploymentLink';
 import { fetchData } from '@/lib/fetchData';
-import { Icon } from '@iconify/react';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
@@ -55,14 +54,14 @@ export default function ProjectPage({ projectData }) {
           <h2>{t('individual_project_deployment_title')}</h2>
           <ul className='flex gap-2'>
             {deploymentURL && (
-              <DeployementLink
+              <DeploymentLink
                 icon='fa:external-link'
                 href={deploymentURL}
                 text={t('individual_project_deployment_url')}
               />
             )}
             {repositoryURL && (
-              <DeployementLink
+              <DeploymentLink
                 icon='fa:github'
                 href={repositoryURL}
                 text={t('individual_project_deployment_repository')}

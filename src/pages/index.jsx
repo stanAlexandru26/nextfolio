@@ -1,9 +1,8 @@
-import ProjectCard from '@/components/card/ProjectCard';
-import ContactContext from '@/context/ContactContext';
+import Image from 'next/image';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/image';
-import { useContext } from 'react';
+
+import ProjectCard from '@/components/card/ProjectCard';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {
@@ -11,9 +10,8 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
     if (n == null) return array[array.length - 1];
     return array.slice(Math.max(array.length - n, 0));
   };
-  const { intro, headshot } = homePageData;
+  const { intro, headshot, name, profession } = homePageData;
   const { t } = useTranslation('layout');
-  const { name, profession } = useContext(ContactContext);
 
   return (
     <section className='space-y-8'>

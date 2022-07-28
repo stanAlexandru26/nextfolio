@@ -1,7 +1,7 @@
 import clsxm from '@/lib/clsxm';
 import { Icon } from '@iconify/react';
 
-export default function DeployementLink({ icon, href, text }) {
+export default function DeploymentLink({ icon, href, text }) {
   return (
     <a
       href={href}

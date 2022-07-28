@@ -1,14 +1,12 @@
 import ContactCard from '@/components/card/ContactCard';
 import TechCard from '@/components/card/TechCard';
-import ContactContext from '@/context/ContactContext';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
-import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-export default function About({ aboutData, skillData }) {
+export default function About({ aboutData, skillData, contactData }) {
   const { bio, skills } = aboutData;
-  const { github, linkedIn, email } = useContext(ContactContext);
+  const { github, linkedIn, email } = contactData;
 
   const { t } = useTranslation('about');
   return (
@@ -60,11 +58,14 @@ export const getStaticProps = async ({ locale }) => {
     populate: 'deep',
     locale: locale,
   });
-
+  const contactRes = await fetchData('/contact', {
+    populate: 'deep',
+  });
   return {
     props: {
       aboutData: aboutRes.data.attributes,
       skillData: aboutRes.data.attributes.stacks.data,
+      contactData: contactRes.data.attributes,
     },
     revalidate: 1,
   };

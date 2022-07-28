@@ -4,15 +4,11 @@ import navbarData from '@/data/navbarData';
 import clsxm from '@/lib/clsxm';
 import ButtonWithIcon from '@/components/button/ButtonWithIcon';
 import ToggleLanguage from './ToggleLanguage';
-import { useContext } from 'react';
-import ContactContext from '@/context/ContactContext';
 import ToggleMiniNav from './ToggleMiniNav';
-
+import contactData from '@/data/contactData';
 export default function Navbar() {
-  const { github, linkedIn } = useContext(ContactContext);
-
   return (
-    <nav className='sticky top-0 bg-slate-200 dark:bg-slate-900 z-30'>
+    <nav className='sticky top-0 z-30 bg-slate-200 dark:bg-slate-900'>
       <div className={clsxm('flex items-center justify-between py-6')}>
         <ul className='ml-[-0.75rem] hidden items-center justify-center sm:flex'>
           {navbarData.map(({ name, href }) => (
@@ -23,10 +19,9 @@ export default function Navbar() {
           <ToggleMiniNav />
         </div>
         <div className='flex space-x-2'>
-          {github && <ButtonWithIcon path={github} icon='fa:github' />}
-          {linkedIn && (
-            <ButtonWithIcon path={linkedIn} icon='fa-brands:linkedin-in' />
-          )}
+          {contactData.map(({ title, icon, href }) => (
+            <ButtonWithIcon key={title} path={href} icon={icon} />
+          ))}
           <ToggleLanguage />
           <ToggleDarkMode />
         </div>
