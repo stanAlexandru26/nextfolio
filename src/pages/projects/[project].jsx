@@ -39,7 +39,7 @@ export default function ProjectPage({ projectData }) {
       )}
 
       {stacks && (
-        <div className='flex flex-row gap-4'>
+        <div className='grid grid-cols-3 gap-2'>
           {stacks.data?.map((s) => (
             <TechCard
               key={s.id}
