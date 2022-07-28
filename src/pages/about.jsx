@@ -1,12 +1,12 @@
+import ReactMarkdown from 'react-markdown';
+import useTranslation from 'next-translate/useTranslation';
 import ContactCard from '@/components/card/ContactCard';
 import TechCard from '@/components/card/TechCard';
 import { fetchData } from '@/lib/fetchData';
-import useTranslation from 'next-translate/useTranslation';
-import ReactMarkdown from 'react-markdown';
+import contactData from '@/data/contactData';
 
-export default function About({ aboutData, skillData, contactData }) {
+export default function About({ aboutData, skillData }) {
   const { bio, skills } = aboutData;
-  const { github, linkedIn, email } = contactData;
 
   const { t } = useTranslation('about');
   return (
@@ -30,25 +30,17 @@ export default function About({ aboutData, skillData, contactData }) {
           ))}
         </ul>
       </div>
-      <ul className='grid w-full grid-cols-1 gap-4 text-gray-600 dark:text-gray-400 md:grid-cols-3 md:flex-row'>
-        <ContactCard
-          path={`mailto:${email}`}
-          title='E-mail'
-          description={email}
-          icon='ci:mail'
-        />
-        <ContactCard
-          path={linkedIn}
-          title='LinkedIn'
-          description={t('about_contact.linkedin')}
-          icon='fa-brands:linkedin-in'
-        />
-        <ContactCard
-          path={github}
-          title='GitHub'
-          description={t('about_contact.github')}
-          icon='fa:github'
-        />
+      <ul className='grid  grid-cols-1 gap-4 md:grid-cols-3 md:flex-row'>
+        {contactData.map((contact) => (
+          <li key={contact.title}>
+            <ContactCard
+              path={contact.href}
+              title={contact.title}
+              description={t(contact.description)}
+              icon={contact.icon}
+            />
+          </li>
+        ))}
       </ul>
     </section>
   );
@@ -58,14 +50,10 @@ export const getStaticProps = async ({ locale }) => {
     populate: 'deep',
     locale: locale,
   });
-  const contactRes = await fetchData('/contact', {
-    populate: 'deep',
-  });
   return {
     props: {
       aboutData: aboutRes.data.attributes,
       skillData: aboutRes.data.attributes.stacks.data,
-      contactData: contactRes.data.attributes,
     },
     revalidate: 1,
   };

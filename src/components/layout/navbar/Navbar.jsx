@@ -1,3 +1,4 @@
+import contactData from '@/data/contactData';
 import NavItem from './NavItem';
 import ToggleDarkMode from './ToggleDarkMode';
 import navbarData from '@/data/navbarData';
@@ -5,7 +6,7 @@ import clsxm from '@/lib/clsxm';
 import ButtonWithIcon from '@/components/button/ButtonWithIcon';
 import ToggleLanguage from './ToggleLanguage';
 import ToggleMiniNav from './ToggleMiniNav';
-import contactData from '@/data/contactData';
+
 export default function Navbar() {
   return (
     <nav className='sticky top-0 z-30 bg-slate-200 dark:bg-slate-900'>
@@ -19,9 +20,12 @@ export default function Navbar() {
           <ToggleMiniNav />
         </div>
         <div className='flex space-x-2'>
-          {contactData.map(({ title, icon, href }) => (
-            <ButtonWithIcon key={title} path={href} icon={icon} />
-          ))}
+          {contactData
+            .filter((contact) => contact.inNavbar)
+            .map(({ title, icon, href }) => (
+              <ButtonWithIcon key={title} path={href} icon={icon} />
+            ))}
+
           <ToggleLanguage />
           <ToggleDarkMode />
         </div>
