@@ -14,7 +14,7 @@ module.exports = nextTranslate({
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: securityHeaders,
       },
     ];
