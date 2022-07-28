@@ -2,6 +2,7 @@ import ProjectCard from '@/components/card/ProjectCard';
 import ContactContext from '@/context/ContactContext';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
 import { useContext } from 'react';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
@@ -21,6 +22,15 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
           <h1>{name}</h1>
           <p className='h4'>{profession}</p>
           <p className='text-gray-600 dark:text-gray-400'>{intro}</p>
+        </div>
+        <div className='shrink-0 rounded-full p-[2px]'>
+          <Image
+            alt={headshot.data.attributes.alternativeText}
+            height={110}
+            width={110}
+            src={headshot.data.attributes.url}
+            className='rounded-full'
+          />
         </div>
       </div>
       <h2>{t('latest_projects')}</h2>

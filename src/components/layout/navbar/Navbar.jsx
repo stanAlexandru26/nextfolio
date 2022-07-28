@@ -12,7 +12,7 @@ export default function Navbar() {
   const { github, linkedIn } = useContext(ContactContext);
 
   return (
-    <nav>
+    <nav className='sticky top-0 bg-slate-200 dark:bg-slate-900 z-30'>
       <div className={clsxm('flex items-center justify-between py-6')}>
         <ul className='ml-[-0.75rem] hidden items-center justify-center sm:flex'>
           {navbarData.map(({ name, href }) => (
