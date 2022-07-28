@@ -45,7 +45,7 @@ export default function ProjectPage({ projectData }) {
               key={s.id}
               title={s.attributes.title}
               href={s.attributes.url}
-              image={s.attributes.icon.data.attributes.url}
+              image={s.attributes.icon.data?.attributes.url}
             />
           ))}
         </div>
