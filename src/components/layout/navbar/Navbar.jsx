@@ -6,6 +6,7 @@ import ButtonWithIcon from '@/components/button/ButtonWithIcon';
 import ToggleLanguage from './ToggleLanguage';
 import { useContext } from 'react';
 import ContactContext from '@/context/ContactContext';
+import ToggleMiniNav from './ToggleMiniNav';
 
 export default function Navbar() {
   const { github, linkedIn } = useContext(ContactContext);
@@ -13,11 +14,14 @@ export default function Navbar() {
   return (
     <nav>
       <div className={clsxm('flex items-center justify-between py-6')}>
-        <ul className='ml-[-0.75rem] flex items-center justify-center '>
+        <ul className='ml-[-0.75rem] hidden items-center justify-center sm:flex'>
           {navbarData.map(({ name, href }) => (
             <NavItem key={name} href={href} name={name} />
           ))}
         </ul>
+        <div className='inline-block sm:hidden'>
+          <ToggleMiniNav />
+        </div>
         <div className='flex space-x-2'>
           {github && <ButtonWithIcon path={github} icon='fa:github' />}
           {linkedIn && (
