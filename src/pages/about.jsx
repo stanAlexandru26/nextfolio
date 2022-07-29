@@ -16,7 +16,7 @@ export default function About({ aboutData, skillData }) {
       <h1>{t('skills_title')}</h1>
       <div className='flex flex-col gap-4 sm:flex-row'>
         <ReactMarkdown className='prose  dark:prose-invert'>
-          {skills.content}
+          {skills}
         </ReactMarkdown>
 
         <ul className='grid basis-3/4 grid-cols-3 gap-2'>
