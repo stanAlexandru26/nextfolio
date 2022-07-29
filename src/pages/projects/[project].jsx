@@ -1,4 +1,5 @@
 import TechCard from '@/components/card/TechCard';
+import SiteLayout from '@/components/layout/SiteLayout';
 import DeploymentLink from '@/components/link/DeploymentLink';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
@@ -14,6 +15,7 @@ export default function ProjectPage({ projectData }) {
     deploymentURL,
     images,
     highlights,
+    seo,
   } = projectData;
   const { t } = useTranslation('projects');
 
@@ -25,7 +27,7 @@ export default function ProjectPage({ projectData }) {
   }));
 
   return (
-    <article className='space-y-8'>
+    <SiteLayout className='space-y-8' seoData={seo}>
       <h1>{title}</h1>
       <p>{description}</p>
       {highlights && (
@@ -82,7 +84,7 @@ export default function ProjectPage({ projectData }) {
           />
         ))}
       </ul>
-    </article>
+    </SiteLayout>
   );
 }
 

@@ -1,13 +1,15 @@
 import ProjectCard from '@/components/card/ProjectCard';
+import SiteLayout from '@/components/layout/SiteLayout';
 import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
 
 export default function Projects({ projectData, portfolioPageData }) {
-  const { longDescription } = portfolioPageData;
+  const { longDescription, seo } = portfolioPageData;
+
   const { t } = useTranslation('projects');
 
   return (
-    <section className='space-y-8'>
+    <SiteLayout className='space-y-8' seoData={seo}>
       <h1> {t('project_page_title')}</h1>
       <p>{longDescription}</p>
 
@@ -16,7 +18,7 @@ export default function Projects({ projectData, portfolioPageData }) {
           <ProjectCard key={p.id} {...p.attributes} />
         ))}
       </div>
-    </section>
+    </SiteLayout>
   );
 }
 export const getStaticProps = async ({ locale }) => {

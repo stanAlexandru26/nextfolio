@@ -3,6 +3,7 @@ import { fetchData } from '@/lib/fetchData';
 import useTranslation from 'next-translate/useTranslation';
 
 import ProjectCard from '@/components/card/ProjectCard';
+import SiteLayout from '@/components/layout/SiteLayout';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {
@@ -10,11 +11,11 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
     if (n == null) return array[array.length - 1];
     return array.slice(Math.max(array.length - n, 0));
   };
-  const { intro, headshot, name, profession } = homePageData;
+  const { intro, headshot, name, profession, seo } = homePageData;
   const { t } = useTranslation('layout');
 
   return (
-    <section className='space-y-8'>
+    <SiteLayout className='space-y-8' seoData={seo}>
       <div className='flex flex-col-reverse items-start justify-between sm:flex-row'>
         <div className='flex flex-col gap-4 pr-8'>
           <h1>{name}</h1>
@@ -42,7 +43,7 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
             <ProjectCard key={project.attributes.id} {...project.attributes} />
           ))}
       </div>
-    </section>
+    </SiteLayout>
   );
 }
 

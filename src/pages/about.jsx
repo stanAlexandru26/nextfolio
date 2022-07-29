@@ -4,13 +4,14 @@ import ContactCard from '@/components/card/ContactCard';
 import TechCard from '@/components/card/TechCard';
 import { fetchData } from '@/lib/fetchData';
 import contactData from '@/data/contactData';
+import SiteLayout from '@/components/layout/SiteLayout';
 
 export default function About({ aboutData, skillData }) {
-  const { bio, skills } = aboutData;
+  const { bio, skills, seo } = aboutData;
 
   const { t } = useTranslation('about');
   return (
-    <section className='space-y-8'>
+    <SiteLayout className='space-y-8' seoData={seo}>
       <h1>{t('about_title')}</h1>
       <p>{bio.long}</p>
       <h1>{t('skills_title')}</h1>
@@ -42,7 +43,7 @@ export default function About({ aboutData, skillData }) {
           </li>
         ))}
       </ul>
-    </section>
+    </SiteLayout>
   );
 }
 export const getStaticProps = async ({ locale }) => {
