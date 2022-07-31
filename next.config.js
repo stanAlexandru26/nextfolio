@@ -19,12 +19,24 @@ module.exports = nextTranslate({
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/bee.js',
+        destination: 'https://cdn.splitbee.io/sb.js',
+      },
+      {
+        source: '/_hive/:slug',
+        destination: 'https://hive.splitbee.io/:slug',
+      },
+    ];
+  },
 });
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.splitbee.io;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.splitbee.io;
     child-src *.google.com;
     style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;

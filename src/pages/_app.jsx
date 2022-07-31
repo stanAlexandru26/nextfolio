@@ -10,7 +10,9 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     splitbee.init({
-      disableCookie: true, // will disable the cookie usage
+      scriptUrl: '/bee.js',
+      apiUrl: '/_hive',
+      disableCookie: true,
     });
   }, []);
 
