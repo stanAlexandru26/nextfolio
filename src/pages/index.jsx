@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import ProjectCard from '@/components/card/ProjectCard';
 import SiteLayout from '@/components/layout/SiteLayout';
+import LinkWithArrow from '@/components/link/LinkWithArrow';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {

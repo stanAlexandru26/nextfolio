@@ -1,3 +1,4 @@
+import clsxm from '@/lib/clsxm';
 import { Icon } from '@iconify/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -16,7 +17,10 @@ export default function ScrollTopButton({ inView }) {
           exit={{ scale: 0 }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.8 }}
-          className='fixed bottom-4 right-4 rounded-full bg-slate-400/30 p-3 backdrop-blur-md dark:bg-slate-800/40 dark:backdrop-blur-md md:p-2'
+          className={clsxm(
+            'fixed bottom-4 right-4 rounded-full p-3',
+            'bg-slate-300 dark:bg-slate-700 '
+          )}
         >
           <Icon icon='bi:arrow-up' className='h-6 w-6' />
         </motion.button>
