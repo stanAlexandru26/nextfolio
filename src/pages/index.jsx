@@ -4,7 +4,6 @@ import useTranslation from 'next-translate/useTranslation';
 
 import ProjectCard from '@/components/card/ProjectCard';
 import SiteLayout from '@/components/layout/SiteLayout';
-import LinkWithArrow from '@/components/link/LinkWithArrow';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {
@@ -26,8 +25,8 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
         <div className='shrink-0 rounded-full p-[2px]'>
           <Image
             alt={headshot.data.attributes.alternativeText}
-            height={110}
-            width={110}
+            height={130}
+            width={130}
             src={headshot.data.attributes.url}
             className='rounded-full'
           />
