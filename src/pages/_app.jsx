@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '@/components/layout/Layout';
 import splitbee from '@splitbee/web';
+import { AnimatePresence } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -16,6 +17,9 @@ function MyApp({ Component, pageProps }) {
     });
   }, []);
 
+  // if (typeof window !== 'undefined') {
+  //   window.history.scrollRestoration = 'manual';
+  // }
   useEffect(() => {
     const handleRouteChange = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -29,9 +33,19 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
   return (
     <ThemeProvider attribute='class' defaultTheme='system'>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <AnimatePresence
+        exitBeforeEnter
+        initial={true}
+        onExitComplete={() => {
+          if (typeof window !== 'undefined') {
+            window.scrollTo({ top: 0 });
+          }
+        }}
+      >
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AnimatePresence>
     </ThemeProvider>
   );
 }
