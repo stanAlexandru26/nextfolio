@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 export default function ContactCard({ description, icon, path, title }) {
   return (
     <a
+      data-splitbee-event={`Click on ${title}`}
       aria-label={title}
       target='_blank'
       rel='nofollow noopener noreferrer'
