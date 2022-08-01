@@ -4,6 +4,7 @@ import useTranslation from 'next-translate/useTranslation';
 
 import ProjectCard from '@/components/card/ProjectCard';
 import SiteLayout from '@/components/layout/SiteLayout';
+import ReactMarkdown from 'react-markdown';
 
 export default function Home({ projectData, homePageData, portfolioPageData }) {
   const sortArray = function (array, n) {
@@ -20,7 +21,7 @@ export default function Home({ projectData, homePageData, portfolioPageData }) {
         <div className='flex flex-col gap-4 pr-8'>
           <h1>{name}</h1>
           <p className='h4'>{profession}</p>
-          <p className='text-gray-600 dark:text-gray-400'>{intro}</p>
+          <ReactMarkdown>{intro}</ReactMarkdown>
         </div>
         <div className='shrink-0 rounded-full p-[2px]'>
           <Image

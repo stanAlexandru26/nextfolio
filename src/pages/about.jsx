@@ -13,10 +13,10 @@ export default function About({ aboutData, skillData }) {
   return (
     <SiteLayout className='space-y-8' seoData={seo}>
       <h1>{t('about_title')}</h1>
-      <p>{bio.long}</p>
+      <ReactMarkdown>{bio.long}</ReactMarkdown>
       <h1>{t('skills_title')}</h1>
       <div className='flex flex-col gap-4 sm:flex-row'>
-        <ReactMarkdown className='prose  dark:prose-invert'>
+        <ReactMarkdown className='prose dark:prose-invert'>
           {skills}
         </ReactMarkdown>
 
