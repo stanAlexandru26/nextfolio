@@ -17,9 +17,6 @@ function MyApp({ Component, pageProps }) {
     });
   }, []);
 
-  // if (typeof window !== 'undefined') {
-  //   window.history.scrollRestoration = 'manual';
-  // }
   useEffect(() => {
     const handleRouteChange = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -31,17 +28,10 @@ function MyApp({ Component, pageProps }) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
   return (
     <ThemeProvider attribute='class' defaultTheme='system'>
-      <AnimatePresence
-        exitBeforeEnter
-        initial={true}
-        onExitComplete={() => {
-          if (typeof window !== 'undefined') {
-            window.scrollTo({ top: 0 });
-          }
-        }}
-      >
+      <AnimatePresence exitBeforeEnter initial={true}>
         <Layout>
           <Component {...pageProps} />
         </Layout>

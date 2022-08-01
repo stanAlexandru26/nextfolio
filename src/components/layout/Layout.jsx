@@ -15,7 +15,7 @@ export default function Layout({ children }) {
     return () => removeEventListener('scroll', toggleVisibility);
   }, []);
   return (
-    <main className='layout'>
+    <main className='layout scroll-smooth'>
       <Navbar />
       {children}
       <Footer />
