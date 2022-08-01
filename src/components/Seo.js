@@ -43,22 +43,25 @@ export default function Seo({ seoData }) {
       <meta
         name='image'
         property='og:image'
-        content={meta.metaImage.data.attributes.url}
+        content={meta.metaImage.data?.attributes.url}
       />
       <meta
         property='og:image:width'
-        content={meta.metaImage.data.attributes.width}
+        content={meta.metaImage.data?.attributes.width}
       />
       <meta
         property='og:image:height'
-        content={meta.metaImage.data.attributes.height}
+        content={meta.metaImage.data?.attributes.height}
       />
       {/* Twitter */}
       <meta name='twitter:card' content='summary_large_image' />
       <meta name='twitter:site' content={meta.siteName} />
       <meta name='twitter:title' content={meta.metaTitle} />
       <meta name='twitter:description' content={meta.metaDescription} />
-      <meta name='twitter:image' content={meta.metaImage.data.attributes.url} />
+      <meta
+        name='twitter:image'
+        content={meta.metaImage.data?.attributes.url}
+      />
 
       {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />

@@ -17,6 +17,7 @@ export default function ProjectPage({ projectData }) {
     highlights,
     seo,
   } = projectData;
+
   const { t } = useTranslation('projects');
 
   const photos = images.data?.map((image) => ({
@@ -121,6 +122,7 @@ export const getStaticProps = async ({ params, locale }) => {
       thumbnail: { populate: '*' },
       preview: { populate: '*' },
       images: { populate: 'deep' },
+      seo: { populate: '*' },
     },
   });
 
