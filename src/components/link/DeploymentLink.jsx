@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react';
 export default function DeploymentLink({ icon, href, text }) {
   return (
     <a
+      data-splitbee-event={`Went on ${href}`}
       href={href}
       className={clsxm(
         'flex items-center justify-center rounded-2xl border px-2 py-1',
@@ -11,10 +12,8 @@ export default function DeploymentLink({ icon, href, text }) {
         'border border-gray-300 dark:border-gray-700'
       )}
     >
-      <Icon icon={icon}/>
-      <span className='px-2 py-1 text-xs font-semibold '>
-        {text}
-      </span>
+      <Icon icon={icon} />
+      <span className='px-2 py-1 text-xs font-semibold '>{text}</span>
     </a>
   );
 }
