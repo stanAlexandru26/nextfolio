@@ -39,10 +39,10 @@ export default function ProjectCard({
         )}
         <div className='flex justify-end gap-2'>
           {repositoryURL && (
-            <ButtonWithIcon icon='fa:github' path={repositoryURL} />
+            <ButtonWithIcon icon='fa:github' href={repositoryURL} />
           )}
           {deploymentURL && (
-            <ButtonWithIcon icon='fa:external-link' path={deploymentURL} />
+            <ButtonWithIcon icon='fa:external-link' href={deploymentURL} />
           )}
         </div>
       </div>

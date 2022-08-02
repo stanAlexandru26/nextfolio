@@ -23,7 +23,7 @@ export default function Navbar() {
           {contactData
             .filter((contact) => contact.inNavbar)
             .map(({ title, icon, href }) => (
-              <ButtonWithIcon key={title} path={href} icon={icon} />
+              <ButtonWithIcon key={title} href={href} icon={icon} />
             ))}
 
           <ToggleLanguage />
