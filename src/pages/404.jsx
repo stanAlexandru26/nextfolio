@@ -16,7 +16,7 @@ export default function Custom404() {
         />
 
         <h1>{t('error_page_text')}</h1>
-        <Link href='/'>{t('error_page_link')}</Link>
+        <Link href='/' >{t('error_page_link')}</Link>
       </section>
     </main>
   );

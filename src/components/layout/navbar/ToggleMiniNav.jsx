@@ -56,18 +56,17 @@ export default function ToggleMiniNav() {
 const MyLink = forwardRef((props, ref) => {
   let { href, children, ...rest } = props;
   return (
-    <Link href={href}>
-      <a
-        ref={ref}
-        {...rest}
-        className={clsxm(
-          'flex flex-row items-center gap-2 px-4 py-2',
-          'first:rounded-t-2xl last:rounded-b-2xl',
-          'hover:bg-slate-300 dark:hover:bg-slate-700'
-        )}
-      >
-        {children}
-      </a>
+    <Link
+      href={href}
+      ref={ref}
+      {...rest}
+      className={clsxm(
+        'flex flex-row items-center gap-2 px-4 py-2',
+        'first:rounded-t-2xl last:rounded-b-2xl',
+        'hover:bg-slate-300 dark:hover:bg-slate-700'
+      )}
+    >
+      {children}
     </Link>
   );
 });
